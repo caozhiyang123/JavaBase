@@ -29,7 +29,12 @@ public class Test {
 			
 			read = new ObjectInputStream(new FileInputStream("output.text"));
 			List<Order> orders2 = (List<Order>)read.readObject();
-			System.out.print(orders2.toString());
+			System.out.println(orders2.toString());
+			
+			//校验面向对象的封装性
+			orders.get(0).getItems().clear();//will throw UnsupportedOperationException
+			orders.get(0).getItems().add(new Item("d"));//will throw UnsupportedOperationException
+			System.out.println(orders.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{

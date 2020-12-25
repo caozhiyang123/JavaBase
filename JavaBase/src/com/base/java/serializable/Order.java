@@ -4,6 +4,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Order implements Serializable {
@@ -20,6 +21,10 @@ class Order implements Serializable {
 
   public void getItem(int i) {
     items.get(i);
+  }
+  
+  public List<Item> getItems(){
+	  return Collections.unmodifiableList(items);
   }
   
   private void writeObject(ObjectOutputStream s) throws Exception{
